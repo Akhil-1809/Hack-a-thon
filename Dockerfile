@@ -7,12 +7,12 @@ WORKDIR /HACK-A-THON/InstantHealth_Connect
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+# RUN npm install
 # Copy the rest of the application code to the container
 COPY . .
 
 # Expose the port that the app will run on
 EXPOSE 3000
 # Command to start the application
-# CMD ["node", "app.js"]
-CMD ["npm", "start"]
+ CMD ["node", "app.js"]
+# CMD ["npm", "start"]
