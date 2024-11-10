@@ -1,26 +1,3 @@
-// const express = require('express');
-// const path = require('path');
-// const mongoose = require('mongoose');
-// const ejsMate = require('ejs-mate');
-// const methodOverride = require('method-override');
-// const jwt = require('jsonwebtoken');
-// const bcrypt = require('bcryptjs');
-// const cookie = require('cookie-parser');
-// const session = require('express-session');
-// const flash = require('connect-flash');
-// const upload = require('express-fileupload');
-// const docxConverter = require('docx-pdf');
-// const patient = require('./models/patient');
-// const doctor = require('./models/doctor');
-// const nodemailer = require('nodemailer');
-// const { google } = require('googleapis');
-// const { spanner } = require('googleapis/build/src/apis/spanner');
-// const http = require('http').createServer(app);
-// const io = require('socket.io')(http);
-
-
-
-
 
 
 const express = require('express');
@@ -40,22 +17,17 @@ const doctor = require('./models/doctor');
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
 const app = express();
-const { v4: uuidV4 } = require('uuid'); // Ensure uuid is available for session IDs
+const { v4: uuidV4 } = require('uuid'); 
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
-// //  here
-//const { v4: uuidV4 } = require('uuid'); // For generating unique session IDs
 
 app.use(express.static('public'));
-
-//Endpoint to create a new session (room)
 app.get('/create-session', (req, res) => {
-  const sessionId = '1a5787fc-1f5e-4cf2-a428-26d500339858'; // Generate a unique session ID
+  const sessionId = '1a5787fc-1f5e-4cf2-a428-26d500339858'; 
   res.send({ sessionId });
 });
 
-// // to here 
 
 mongoose.connect("mongodb+srv://chaitanyaakhil123:z0oiWJFgCYv60I4g@cluster0.5bpzu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0y",{ useNewUrlParser: true , useUnifiedTopology: true, useCreateIndex : true, useFindAndModify : false})
 
@@ -1111,9 +1083,6 @@ io.on('connection', (socket) => {
       socket.to(userId).emit('candidate', socket.id, candidate);
     });
   });
-
-
-
 
 
 http.listen(3000, () => {
