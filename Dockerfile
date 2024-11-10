@@ -2,7 +2,7 @@
 FROM node:16
 
 # Set the working directory inside the container
-WORKDIR /HACK-A-THON/InstantHealth_Connect
+WORKDIR /HACK-A-THON
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
