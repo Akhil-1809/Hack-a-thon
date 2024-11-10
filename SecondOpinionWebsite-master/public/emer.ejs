@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Call App</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      overflow: hidden;
+    }
+    #videos {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+    }
+    video {
+      width: 50%;
+      height: 100%;
+      object-fit: cover;
+    }
+    #controls {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      color: white;
+      background-color: #333;
+      border: none;
+      border-radius: 5px;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div id="videos">
+    <video id="localVideo" autoplay muted></video>
+    <video id="remoteVideo" autoplay></video>
+  </div>
+  
+  <div id="controls">
+    <button onclick="toggleMicrophone()">Mic On/Off</button>
+    <button onclick="toggleSpeaker()">Speaker On/Off</button>
+    <button onclick="endCall()">End Call</button>
+    <button onclick="createSession()">New Session</button>
+    <input type="text" id="sessionIdInput" placeholder="Enter Session ID">
+    <button onclick="joinSession()">Join</button>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io('/');
+    const peerConnectionConfig = {
+      'iceServers': [{ 'urls': 'stun:stun.l.google.com:19302' }]
+    };
+    
+    let localStream;
+    let peerConnection;
+    let sessionId;
+    let isMicrophoneOn = true;
+    let isSpeakerOn = true;
+
+    async function createSession() {
+      const response = await fetch('/create-session');
+      const data = await response.json();
+      sessionId = data.sessionId;
+      alert(`Session created! Share this ID to invite others: ${sessionId}`);
+      initializeStream();
+    }
+
+    function joinSession() {
+      sessionId = document.getElementById('sessionIdInput').value;
+      if (sessionId) {
+        initializeStream();
+      } else {
+        alert("Please enter a valid session ID.");
+      }
+    }
+
+    async function initializeStream() {
+      try {
+        localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        document.getElementById('localVideo').srcObject = localStream;
+        socket.emit('join-session', sessionId, socket.id);
+
+        const audioTracks = localStream.getAudioTracks();
+        if (audioTracks.length > 0) {
+          console.log(`Audio Track: ${audioTracks[0].label}, Enabled: ${audioTracks[0].enabled}`);
+        } else {
+          console.error("No audio tracks available.");
+        }
+      } catch (error) {
+        console.error('Error accessing media devices.', error);
+      }
+    }
+
+    socket.on('user-connected', userId => { callUser(userId); });
+    socket.on('offer', handleOffer);
+    socket.on('answer', description => { peerConnection.setRemoteDescription(description); });
+    socket.on('candidate', (id, candidate) => {
+      peerConnection.addIceCandidate(new RTCIceCandidate(candidate)).catch(e => console.error(e));
+    });
+
+    function handleOffer(id, description) {
+      peerConnection = createPeerConnection(id);
+      peerConnection.setRemoteDescription(description)
+        .then(() => peerConnection.createAnswer())
+        .then(sdp => peerConnection.setLocalDescription(sdp))
+        .then(() => socket.emit('answer', id, peerConnection.localDescription));
+    }
+
+    function callUser(userId) {
+      peerConnection = createPeerConnection(userId);
+      peerConnection.createOffer()
+        .then(sdp => peerConnection.setLocalDescription(sdp))
+        .then(() => socket.emit('offer', userId, peerConnection.localDescription));
+    }
+
+    function createPeerConnection(userId) {
+      const pc = new RTCPeerConnection(peerConnectionConfig);
+      pc.onicecandidate = event => {
+        if (event.candidate) socket.emit('candidate', userId, event.candidate);
+      };
+      pc.ontrack = event => {
+        document.getElementById('remoteVideo').srcObject = event.streams[0];
+      };
+      localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
+      return pc;
+    }
+
+    function toggleMicrophone() {
+      isMicrophoneOn = !isMicrophoneOn;
+      localStream.getAudioTracks().forEach(track => track.enabled = isMicrophoneOn);
+      alert(`Microphone ${isMicrophoneOn ? "On" : "Off"}`);
+    }
+
+    function toggleSpeaker() {
+      isSpeakerOn = !isSpeakerOn;
+      document.getElementById('remoteVideo').muted = !isSpeakerOn;
+      alert(`Speaker ${isSpeakerOn ? "On" : "Off"}`);
+    }
+
+    function endCall() {
+      if (peerConnection) {
+        peerConnection.close();
+        peerConnection = null;
+      }
+      socket.emit('disconnect'); // Close the connection
+      document.getElementById('remoteVideo').srcObject = null;
+      alert("Call ended.");
+    }
+  </script>
+</body>
+</html>

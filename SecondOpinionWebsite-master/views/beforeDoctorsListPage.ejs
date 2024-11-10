@@ -1,0 +1,54 @@
+<%- include('partials/header2') -%>
+
+    <h1 class="text-center my-5"> Doctor's List page </h1>
+
+    <style media="screen">
+      .row{
+        display : block;
+        width : 50%;
+        margin-left : 37vw!important;
+
+      }
+      .card{
+        background: #CDD7E6;
+        border : 0;
+      }
+
+
+      .btn-login{
+        background: #B3B6B7;
+      }
+    </style>
+
+    <%= (typeof variable !="undefined" ? variable : "" ) %>
+        <form method="POST" action="/beforeDoctorsListPage" class="text-center">
+            <% doctorsList.forEach(doctor=> { %>
+
+                <div class="row text-center ml-auto">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                  <b>  <%= doctor.name %></b>
+                                </h5>
+                                <h6 class="card-title">Doctor Preferred Language: <%= doctor.language %>
+                                </h6>
+                                <div>
+                                    <input type="checkbox" id="vehicle1" name="selectName" value="<%=doctor._id%>">
+                                    <label for="vehicle1"> Select this doctor </label><br>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <% }) %>
+                    <button type="submit" class="btn btn-login text-center">Submit</button>
+        </form>
+        <div class="text-center">
+          <a type="button" class="btn btn-login text-center  mt-3" href="doctorsListPage">Show all doctors</a>
+
+        </div>
+
+        <%- include('partials/footer') -%>

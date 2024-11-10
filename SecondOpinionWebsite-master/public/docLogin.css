@@ -1,0 +1,42 @@
+.headingLogin{
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+body{
+  background: #CDD7E6;
+  overflow-x: hidden;
+}
+
+.card{
+  border :0;
+}
+
+.card-body{
+  padding : 64px;
+  background: #CDD7E6;
+}
+
+
+/* .form-control {
+   background: #E5E5E5;
+}
+
+
+.form-control:focus{
+  background: #E5E5E5;
+} */
+
+
+.login-btn , .btn-login{
+  background: #B3B6B7;
+  width: 200px;
+  margin : auto;
+}
+
+.additional-option{
+  display: flex;
+  justify-content: space-between;
+  margin: 16px;
+}

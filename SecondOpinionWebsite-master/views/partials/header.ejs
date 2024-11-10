@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> DTProject </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="./navbar.css"> -->
+    <style media="screen">
+      *{
+        font-family: 'Lato', sans-serif;
+      }
+      body{
+        overflow-x : hidden;
+        background: #CDD7E6;
+      }
+
+      .navbar{
+        display: flex;
+        justify-content: space-between;
+        padding : 16px 32px;
+      }
+
+
+      .Logo a{
+        color : black;
+        text-decoration: none;
+      }
+
+      .Logo a h1{
+          font-size: 24px;
+      }
+
+
+      .login-options{
+        display: flex;
+        justify-content: space-between;
+        width: 150px;
+      }
+
+      .login-options a{
+        color: black;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+    </style>
+
+<body>
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Second Opinion</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <li class="nav-item dropdown login">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Login
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/doctorLogin"> Doctor </a>
+                <a class="dropdown-item" href="/patientLogin"> Patient </a>
+            </div>
+        </li>
+    </nav> -->
+
+
+    <div class="navbar">
+      <div class="Logo">
+        <a href="/"> <h1>Second Opinion</h1> </a>
+      </div>
+      <div class="login-options">
+        <a href="/doctorLogin">Doctor</a>
+        <a href="/patientLogin">Patient</a>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

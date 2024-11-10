@@ -1,0 +1,28 @@
+<%- include('partials/header2') %>
+
+<style media="screen">
+  .btn-login{
+    margin-top: 8px;
+    background: #B3B6B7;
+    padding: 8px 16px;
+  }
+
+  .card{
+    background: #CDD7E6;
+    border : 0;
+  }
+
+</style>
+    <div class="card text-center">
+        <div class="card-body">
+            <h5 class="card-title">
+              <b> <%=foundPatient.name%> </b>
+            </h5>
+            <p class="card-text">Problem: <%= foundPatient.diseaseType%>
+            </p>
+            <a href="/download/<%= foundPatient._id %>" class="btn btn-login"> Download Reports </a>
+            <p class="card-text my-2">Remarks: <%= x %></p>
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>

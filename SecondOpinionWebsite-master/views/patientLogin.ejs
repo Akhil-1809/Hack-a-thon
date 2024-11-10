@@ -1,0 +1,37 @@
+<%- include('partials/header') -%>
+
+<link rel="stylesheet" href="./docLogin.css">
+
+
+<h1 class="headingLogin"> Patient Login </h1>
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col-sm-12 col-md-8">
+        <div class="card">
+            <div class="card-body signin-card" >
+                <form action="/patientLogin" method="POST" class="signin-form">
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="text" name="phoneNumber" class="form-control" id="phoneNumber" aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your Phone Number with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control" id="password">
+                    </div>
+                    <button type="submit" class="btn btn-login"> SignIn </button>
+                </form>
+                <div class="additional-option">
+                  <a href="/doctorSignUp" class="createNewAccount">Don't have account? Register here</a>
+                  <br>
+                  <a href="/forgotPasswordPatient" class="forgotPassword">Forgot Password</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col"></div>
+</div>
+
+
+<%- include('partials/footer') -%>

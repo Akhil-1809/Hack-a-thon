@@ -1,0 +1,30 @@
+<%- include('partials/header2') %>
+
+    <link rel="stylesheet" href="./dashboard.css">
+    <h1 class="text-center my-5"> New Patients</h1>
+
+    <style media="screen">
+      .High{
+        color : red;
+      }
+
+      .Medium{
+        color : yellow;
+      }
+      .Low{
+        color : green;
+      }
+    </style>
+
+    <% newPatients.forEach(patient => { %>
+        <div class="card text-center">
+            <div class="card-body">
+              <h5 class="card-title">  <b> <%=patient.name%> </b> </h5>
+              <p class="card-text">Problem: <%= patient.diseaseType%></p>
+              <p class="card-text">Severity: <span class="<%= patient.severity%>"> <%= patient.severity%></span> </p>
+              <a href="/doctorPatientInfo/<%=patient._id%>" class="btn btn-login">Check this patient</a>
+            </div>
+          </div>
+    <% }) %>
+
+<%- include('partials/footer') %>

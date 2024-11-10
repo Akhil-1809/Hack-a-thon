@@ -1,0 +1,16 @@
+
+.card{
+  background: #CDD7E6;
+  border : 0;
+}
+
+
+.btn-login{
+  background: white;
+}
+
+.d-flex{
+  margin: 128px 20vw ;
+  justify-content : space-between;
+  align-items : center;
+}

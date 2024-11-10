@@ -1,0 +1,47 @@
+<%- include('partials/header') -%>
+
+<style media="screen">
+  .card{
+  background: #CDD7E6;
+  border : 0;
+  }
+
+  .card-header{
+    background: #CDD7E6;
+    border : 0;
+  }
+  .btn-login{
+    margin: 8px;
+    background: #B3B6B7;
+    padding: 8px 16px;
+  }
+
+  </style>
+
+    <h2 class="text-center my-5">Certificate upload page</h2>
+
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-12 col-md-8">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h2> Hello <%= foundDoctor.name %> </h2>
+                    <h4> Please upload your certificates here.</h4>
+                    <h4> Make sure you upload all in a single file </h4>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Upload Certificates</h5>
+                    <form action="/doctorCertificateUploadPage/<%=foundDoctor._id%>" method="POST" enctype="multipart/form-data"
+                        class="upload">
+                        <div class="form-group">
+                            <input type="file" name="uploadFile" class="form-control-file" style="padding-left : 27vw;"   id="exampleFormControlFile1">
+                        </div>
+                        <button type="submit" class="btn btn-login" > SUBMIT </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+
+    <%- include('partials/footer') -%>

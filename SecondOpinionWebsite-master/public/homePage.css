@@ -1,0 +1,43 @@
+body{
+  background-image: url("https://static01.nyt.com/images/2017/02/16/well/doctors-hospital-design/doctors-hospital-design-videoSixteenByNineJumbo1600.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.card{
+  border : 0;
+  margin-top: 10%;
+  background: none;
+}
+
+.card-body{
+    background: rgba(255,255,255,0);
+    border : 0;
+    padding: 0;
+}
+
+
+.btn-login{
+  background: #B3B6B7;
+  margin-right: 64px;
+  padding: 16px;
+}
+
+
+.btn-login:hover{
+  background: #B3B6A1;
+}
+
+
+.btn-emergencies {
+  background-color: #FF4C4C; /* Red color for emergencies */
+  color: white;
+  margin-right: 64px;
+  padding: 16px;
+}
+
+.btn-emergencies:hover {
+  background-color: #FF1A1A;
+}

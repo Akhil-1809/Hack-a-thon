@@ -1,0 +1,16 @@
+.card{
+  border : 0;
+  background: #CDD7E6;
+}
+
+
+.info{
+  font-size: 16px;
+}
+
+
+.btn-login{
+  margin-top: 8px;
+  background: #B3B6B7;
+  padding: 8px 16px;
+}

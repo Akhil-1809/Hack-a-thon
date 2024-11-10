@@ -1,0 +1,39 @@
+<%- include('partials/header2') -%>
+
+<style media="screen">
+
+  .card{
+    background: #CDD7E6;
+    border : 0;
+  }
+
+
+  .btn-login{
+    background: white;
+  }
+
+
+  .d-flex{
+    margin: 128px 20vw ;
+    justify-content : space-between;
+    align-items : center;
+  }
+
+</style>
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col-sm-12 col-md-8">
+        <div class="card">
+            <div class="card-body signin-card d-flex ">
+                <a class="btn btn-login btn-lg p-3" href="currentAdvice" role="button">Current Advice</a>
+                <br>
+                <br>
+                <a class="btn btn-login btn-lg p-3  " href="newAdvice" role="button">New Advice</a>
+            </div>
+        </div>
+    </div>
+    <div class="col"></div>
+</div>
+
+<%- include('partials/footer') -%>

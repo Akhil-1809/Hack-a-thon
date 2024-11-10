@@ -1,0 +1,19 @@
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+body{
+  background: #CDD7E6;
+  overflow-x : hidden;
+}
+
+
+.navbar a {
+  color : black;
+}
+
+.logo h2{
+  font-size : 20px;
+}

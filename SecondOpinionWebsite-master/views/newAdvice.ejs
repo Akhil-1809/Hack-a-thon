@@ -1,0 +1,61 @@
+<%- include('partials/header2') -%>
+
+<style media="screen">
+  .card {
+    background: #CDD7E6;
+    border: 0;
+  }
+
+
+  .btn-login {
+    background: #B3B6B7;
+  }
+
+  /* .form-group.upload{
+    padding-left : 37vw;
+  } */
+</style>
+
+<h1 class="text-center my-5">New Advice</h1>
+
+<div class="row">
+  <div class="col"></div>
+  <div class="col-sm-12 col-md-8">
+    <div class="card">
+      <div class="card-body signin-card text-center">
+        <form action="/newAdvice" method="POST" enctype="multipart/form-data" class="upload">
+          <div class="form-group ">
+            <label for="diseaseType">Disease Type</label>
+            <input type="text" name="diseaseType" class="form-control" id="diseaseType" aria-describedby="emailHelp">
+          </div>
+          <div class="form-group ">
+            <label for="severity">Severity</label>
+            <input type="text" name="severity" class="form-control" id="severity" placeholder="High,Medium,Low">
+          </div>
+          <!-- <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown button
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <input class="dropdown-item" type="radio" name="severity" value="High"> High</input>
+              <input class="dropdown-item" type="radio" name="severity" value="Medium"> Medium</input>
+              <input class="dropdown-item" type="radio" name="severity" value="Low"> Low</input>
+            </div>
+          </div> -->
+          <br>
+          <h5 class="text-center"> Upload reports</h5>
+          <h6 class="text-center"> Please upload your reports here.</h6>
+          <h6 class="text-center"> Make sure you upload all in a single file </h6>
+          <br>
+          <div class="form-group" style="margin-left:27vw;">
+            <input type="file" name="uploadFile" class="form-control-file m" class="btn-login" id="exampleFormControlFile1">
+          </div>
+          <button type="submit" class="btn btn-login"> Submit </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col"></div>
+</div>
+
+<%- include('partials/footer') -%>

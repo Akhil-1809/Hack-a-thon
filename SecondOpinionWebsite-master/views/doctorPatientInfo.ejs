@@ -1,0 +1,36 @@
+<%- include('partials/header2') %>
+
+
+  <style media="screen">
+    .card{
+    background: #CDD7E6;
+    border : 0;
+    }
+    .btn-login{
+      margin: 8px;
+      background: #B3B6B7;
+      padding: 8px 16px;
+    }
+
+
+  </style>
+
+    <div class="card text-center">
+        <div class="card-body">
+            <h5 class="card-title">
+                <b><%=foundPatient.name%></b>
+            </h5>
+            <p class="card-text">Problem: <%= foundPatient.diseaseType%>
+            </p>
+            <a href="/download/<%= foundPatient._id %>" class="btn btn-login"> Download Reports </a>
+            <form method="POST" action="/doctorCheckedPatients/<%=foundPatient._id%>">
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label" name="remarks">Remarks</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="width : 350px; margin : auto;" name="remarks"></textarea>
+                  </div>
+                <button type="submit" class="btn btn-login"> SUBMIT </button>
+            </form>
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>

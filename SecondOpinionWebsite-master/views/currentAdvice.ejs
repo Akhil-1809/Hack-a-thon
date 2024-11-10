@@ -1,0 +1,43 @@
+<%- include('partials/header2') -%>
+
+  <style media="screen">
+
+    .card{
+      background: #CDD7E6;
+      border : 0;
+    }
+
+  </style>
+  <% if(foundPatient.currentAdvice==1) { %>
+    <h2 class="text-center my-5"> Hello, <%= foundPatient.name %>
+    </h2>
+    <div class="card mx-auto p-4" style="width: 35%">
+      <div class="card-body">
+        <h3 class="card-title">Your current advice</h3>
+        <p class="card-text">Still in Progress, we will let you know as soon as we recieve it from the doctors</p>
+        <a href="patientDashboard" class="card-link">Go to the dashboard</a>
+      </div>
+    </div>
+    <% } else if(foundPatient.currentAdvice == 0 && foundPatient.remarksByDoctors.length == 0) { %>
+      <div class="card mx-auto p-4" style="width: 35%">
+        <div class="card-body">
+          <h5 class="card-title">Your current advice</h5>
+          <p class="card-text">You have not applied for the Second Opinion yet</p>
+          <a href="newAdvice" class="card-link">Click here to apply</a>
+        </div>
+      </div>
+      <% } else { %>
+        <% x.forEach(eachX => { %>
+          <div class="card mx-auto p-4" style="width: 35%">
+            <div class="card-body">
+              <h5 class="card-title">Doctor: <%= eachX.doctorName %></h5>
+              <p class="card-text">Remarks given by him: <%=eachX.remarks%></p>
+            </div>
+          </div>
+        <% }) %>
+      <% } %>
+      <div class="text-center">
+
+        <a href="newAdvice" class="card-link ">Click here to apply</a>
+      </div>
+<%- include('partials/footer') -%>

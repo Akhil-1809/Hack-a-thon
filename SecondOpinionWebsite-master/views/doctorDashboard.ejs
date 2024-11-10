@@ -1,0 +1,27 @@
+<%- include('partials/header2') -%>
+    <link rel="stylesheet" href="./dashboard.css">
+    <h1 class="text-center my-5"> Doctor Dashboard </h1>
+    <%= (typeof variable !="undefined" ? variable : "" ) %>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-sm-12 col-md-8">
+                <div class="card">
+                    <div class="card-body signin-card d-flex">
+                        <a class="btn btn-login btn-lg p-3  " href="doctorOldPatient" role="button">Old
+                            Patients</a>
+                        <br>
+                        <br>
+                        <a class="btn btn-login btn-lg p-3 " href="doctorNewPatient" role="button">New
+                            Patients</a>
+                            <br>
+                            <br>
+
+                            <a class="btn btn-login btn-lg p-3 " href="emer" role="button">Emergency Call</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+
+
+        <%- include('partials/footer') -%>
