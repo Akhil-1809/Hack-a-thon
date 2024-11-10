@@ -14,5 +14,5 @@ COPY . .
 # Expose the port that the app will run on
 EXPOSE 3000
 # Command to start the application
-CMD ["node", "/HACK-A-THON/InstantHealth_Connect/app.js"]
-# CMD ["npm", "start"]
+#CMD ["node", "/HACK-A-THON/InstantHealth_Connect/app.js"]
+CMD ["npm", "start"]
